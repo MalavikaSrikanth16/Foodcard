@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pragyan 16</title>
+
+        <link href='https://fonts.googleapis.com/css?family=Roboto:900,300' rel='stylesheet' type='text/css'>
+        <link type="text/css" rel="stylesheet" href="css/material.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/tshirt_form.css"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script>
+    //Browser detection and redirection
+        //DETECT DEVICE
+
+        var deviceName;
+
+        function detectDevice()
+        {
+        	if
+        	(
+        	(navigator.userAgent.match(/iPhone/i))
+        	||
+        	(navigator.userAgent.match(/iPod/i))
+        	||
+        	(navigator.userAgent.match(/iPad/i))
+        	)
+        	{
+        		deviceName = "iosdevice";
+        	}
+        	else if (navigator.userAgent.match(/Android/i))
+        	{
+        		deviceName = "android";
+        	}
+        	else if (navigator.userAgent.match(/BlackBerry/i))
+        	{
+        		deviceName = "blackberry";
+        	}
+        	else if (navigator.userAgent.match(/IEMobile/i))
+        	{
+        		deviceName = "iemobile";
+        	}
+        	else if (navigator.userAgent.match(/Silk/i))
+        	{
+        		deviceName = "kindle";
+        	}
+        	else
+        	{
+        		deviceName = "computer";
+        	}
+
+        	//alert(deviceName);
+        }
+
+        detectDevice();
+        if(deviceName == 'android') {
+            window.location.assign("https://play.google.com/store/apps/details?id=com.festember.festemberapp");
+            //window.location.assign("market://details?id=com.festember.festemberapp");
+        }
+    </script>
+    </head>
+    <body>
+        <div class="logo">
+            <img class="img_logo" src="plogo.jpg" />
+        </div>
+        <!-- Username & Password -->
+        <div class="parent mdl_card mdl-shadow--4dp">
+            <div class="question_set overlay mdl-cell--middle">
+            </div>
+	    <form action="index.html#">
+            <div class="user_auth question_set mdl-">
+                <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="user_roll" id="user_roll" pattern="-?[0-9]*(\.[0-9]+)?" maxlength=9 minlength=9>
+                    <span class="mdl-textfield__error">Must be 9 digits, only numerical characters.</span>
+                    <label class="mdl-textfield__label" for="user_roll">Roll Number</label>
+                </div>
+                <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" name="user_password" id="user_password">
+                    <label class="mdl-textfield__label" for="user_password">Password</label>
+                </div>
+                <div class="field">
+                    <button id="submit_user_auth" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Login
+                    </button>
+                    <p id="loginspinner" class="mdl-spinner mdl-js-spinner"> </p>
+                </div>
+            </div>
+            </form>
+            <!-- Get fees option screen -->
+            <div class="fees_data question_set">
+                <div class="field" style="margin-left:0!important; text-align:center;">
+                    <br>
+                    <center style="padding:0!important; margin:0!important;">
+                    <div style="font-size: 18px; padding:0!important;">Rs.550 - Food Card only<br> Rs.700 - Food Card + T-Shirt</div>
+                    </center>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_food">
+                        <input type="radio" id="option_food" class="mdl-radio__button" name="options" value="550" checked />
+                        <span class="mdl-radio__label">Rs.550</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_food_tshirt">
+                        <input type="radio" id="option_food_tshirt" class="mdl-radio__button" name="options" value="700" />
+                        <span class="mdl-radio__label">Rs.700</span>
+                    </label>
+                </div>
+                <br>
+                <br>
+                <br>
+
+                <div class="field center_button">
+                    &nbsp
+                    &nbsp
+                    <button id="back_submit_amount" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary" style="display:none;">
+                        Back
+                    </button>
+                    <button id="submit_amount" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Next
+                    </button>
+                </div>
+            </div>
+            <!-- Final screen when only food-->
+            <div class="final_food question_set">
+                <div class="field">
+                    <label for="provided_roll">Roll Number: </label>
+                    <span name="provided_roll" id="provided_roll"></span>
+                </div>
+                <div class="field">
+                    <label for="provided_cost">Cost: </label>
+                    <span name="provided_cost" id="provided_cost"></span>
+                </div>
+                <div class="field">
+                    &nbsp
+                    &nbsp
+                    <br>
+                    <button id="back_submit_food_confirm" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Back
+                    </button>
+                    <button id="submit_confirm" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+            <!-- TShirt data entry screen -->
+            <div class="tshirt_data question_set">
+                <div class="field">
+                    Gender:
+                    <br>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_male">
+                        <input type="radio" id="option_male" class="mdl-radio__button" name="option_gender" value="Male" checked />
+                        <span class="mdl-radio__label">Male</span>
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_female">
+                        <input type="radio" id="option_female" class="mdl-radio__button" name="option_gender" value="Female" />
+                        <span class="mdl-radio__label">Female</span>
+                    </label>
+                </div>
+                <div class="field">
+                    Size:
+                    <br>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_small">
+                        <input type="radio" id="option_small" class="mdl-radio__button" name="option_size" value="S"/>
+                        <span class="mdl-radio__label">Small</span>&nbsp
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_medium">
+                        <input type="radio" id="option_medium" class="mdl-radio__button" name="option_size" value="M" />
+                        <span class="mdl-radio__label">Medium</span>&nbsp
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_large">
+                        <input type="radio" id="option_large" class="mdl-radio__button" name="option_size" value="L"/>
+                        <span class="mdl-radio__label">Large</span>&nbsp
+                    </label>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_xlarge">
+                        <input type="radio" id="option_xlarge" class="mdl-radio__button" name="option_size" value="XL" />
+                        <span class="mdl-radio__label">X Large</span>&nbsp
+                    </label>
+                    <br>
+                    <br>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option_xxlarge">
+                        <input type="radio" id="option_xxlarge" class="mdl-radio__button" name="option_size" value="XXL" />
+                        <span class="mdl-radio__label">XX Large</span>&nbsp
+                    </label>
+                </div>
+                <div class="field">
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    <button id="back_tshirt_next" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Back
+                    </button>
+                    <button id="tshirt_next" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Next
+                    </button>
+                </div>
+            </div>
+            <div class="final_tshirt question_set">
+                <div class="field">
+                    <label for="provided_roll">Roll Number: </label>
+                    <span name="provided_roll" id="provided_tshirt_roll"></span>
+                </div>
+                <div class="field">
+                    <label for="provided_cost">Cost: </label>
+                    <span name="provided_cost" id="provided_cost"></span>
+                </div>
+                <div class="field">
+                    <label for="provided_gender">Gender: </label>
+                    <span name="provided_gender" id="provided_gender"></span>
+                </div>
+                <div class="field">
+                    <label for="provided_size">Size: </label>
+                    <span name="provided_size" id="provided_size"></span>
+                </div>
+                <div class="field">
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    <br>
+                    <button id="back_submit_tshirt_confirm" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Back
+                    </button>
+                    <button id="submit_tshirt_confirm" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--primary">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+            <div class="thank question_set" style="display:none">
+                <div class="field">
+                    Thanks, for registering. Can't wait to see you at FESTEMBER'15
+                </div>
+            </div>
+            <div class="show_qr question_set">
+                <div class="field" style="padding:0!important; margin:0!important;">
+                </div>
+                <center>
+                <span style="font-size:18px!important">Bring this QR code during distribution.</span>
+                </center>
+            </div>
+        </div>
+        <!--Import jQuery before material.js-->
+      <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+      <script type="text/javascript" src="js/material.min.js"></script>
+      <script type="text/javascript" src="js/tshirt_form.js"></script>
+      <span style="display:none">#pyGoose</span>
+    </body>
+</html>

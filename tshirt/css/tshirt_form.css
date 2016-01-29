@@ -1,0 +1,120 @@
+.user_auth{
+    z-index: 8;
+}
+
+body {
+    background-image: url("tessellation.jpg");
+    background-repeat: repeat;
+    -webkit-animation: animatedBackground 90s linear infinite;
+    animation: animatedBackground 90s linear infinite;
+}
+
+div {
+    border-radius: 2px;
+}
+
+.question_set {
+    width: 400px;
+    max-width: 90%;
+    min-width: 400px;
+    height: 300px;
+    font-size: 60px;
+    position: absolute;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.center_button {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.logo {
+    margin: auto;
+    bottom: 150px;
+    right: 0;
+    left: 0;
+    position: static;
+    height: 200px;
+    z-index: 0;
+}
+
+.img_logo {
+    margin: auto;
+    height: 200px;
+    width: 200px;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+}
+
+.parent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    width:400px;
+    height:330px;
+    margin: auto;
+    z-index: 0;
+}
+
+.final_food {
+    z-index: -10;
+}
+
+.final_tshirt, .tshirt_data, .thank, .final_food {
+    font-family: 'Roboto', sans-serif;
+    /*font-size: 1.5vh;*/
+    font-size : 18px;
+}
+
+.thank {
+    z-index: -9;
+}
+
+.fees_data {
+    z-index: 1;
+}
+
+.overlay {
+    opacity: 1;
+    z-index: 2;
+    position: absolute;
+    margin: auto;
+    background-color: white;
+}
+
+.show_qr {
+    z-index: -11;
+}
+.field {
+    padding-top: 5%;
+    margin-left: 10%;
+}
+
+.tshirt_data {
+    z-index: 1;
+}
+
+@media (max-width: 1000px) {
+    .final_food, .thank, .final_tshirt, .tshirt_data {
+        font-size: 2.5vh;
+    }
+}
+
+@-webkit-keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
+
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 100% 0; }
+}
