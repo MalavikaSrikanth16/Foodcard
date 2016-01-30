@@ -49,9 +49,9 @@ $(document).ready(function() {
         else {
                 var privVariables = (function(){
 
-                    var user_auth_url = "api.pragyan.org/tshirt/userauth";
-                    var tshirt_url = "api.pragyan.org/tshirt/register";
-                    var qr_url = "api.pragyan.org/tshirt/qrcode";
+                    var user_auth_url = "http://api.pragyan.org/tshirt/userauth";
+                    var tshirt_url = "http://api.pragyan.org/tshirt/register";
+                    var qr_url = "http://api.pragyan.org/tshirt/qrcode";
                     var user_gender, user_size;
                     var priv_user_roll, priv_user_password;
                     
@@ -70,7 +70,7 @@ $(document).ready(function() {
                         if(priv_user_roll.length == 9) {
                             var form_data  = '{"user_roll":"' + String(priv_user_roll) + '","user_password":"' + String(priv_user_password) + '"}';
                             var json_form_data = JSON.parse(form_data);
-                            console.log(form_data);
+                            //console.log(form_data);
                             $.ajax({
                                 type: "POST",
                                 url: user_auth_url,
@@ -85,20 +85,20 @@ $(document).ready(function() {
                                 success: function(data) {
                                     //Logic for if the status code, etc,etc then the next step
                                         
-console.log(data);
+                                    //console.log(data);
                                     $("button#submit_user_auth").prop('disabled',false);
                                     $("#loginspinner").removeClass("is-active");
 
-                                    if(data['auth'] == '0'){
+                                    if(data['status'] == '0'){
                                         //console.log("Received error is: " + data['error']);
                                         alert("Username / Password is Incorrect");
                                     }
-                                    else if(data['auth'] == '1') {
+                                    else if(data['status'] == '1') {
                                         //console.log("Success");
                                         askAmount();
                                     }
-                                    else if(data['auth'] == '2') {
-
+                                    else if(data['status'] == '2') {
+                                    
                                      $("div.user_auth").fadeOut("slow", function() {
                                         $("div.user_auth").css("z-index", "-3");
                                         $("div.show_qr").css("z-index", "11");
@@ -109,7 +109,7 @@ console.log(data);
                                         getQR();
                                         //console.log("Received error is: " + data['error']);
                                     }
-                                    else if(data['auth'] == '3') {
+                                    else if(data['status'] == '3') {
                                         //console.log("Received error is : " + data['error']);
                                        alert("There is some error. Sorry for the inconvenience caused.");
                                     }
@@ -126,6 +126,7 @@ console.log(data);
                             //Doesn't work
                             // $("span.user_auth").css("visibility","visible");
                             alert("Roll no must be 9 digits");
+                            return;
                         }
                         return false;//prevent the url issue
                     });
@@ -246,16 +247,16 @@ console.log(data);
                                     success: function(data) {
                                         ////console.log(data);
                                         //console.log("The ajax request was successful");
-                                        if (data['auth'] == '2') {
+                                        if (data['status'] == '2') {
                                             //console.log("Successful (but...)");
                                             //console.log(data['error']);
                                             getQR();
                                         }
-                                        else if(data['auth'] == '0') {
+                                        else if(data['status'] == '0') {
                                             //console.log("Received error is : " + data['error']);
                                             alert("Username / Password is Incorrect");
                                         }
-                                        else if (data['auth'] == '3') {
+                                        else if (data['status'] == '3') {
                                             //console.log(data['error']);
                                             alert("Some error has occurred. Sorry for the inconvenience caused");
                                         }
@@ -311,18 +312,18 @@ console.log(data);
                                     success: function(data) {
                                         ////console.log(data);
                                         //console.log("The ajax request was successful");
-                                        if (data['auth'] == '2') {
+                                        if (data['status'] == '2') {
                                             //console.log("Successful (but...)");
                                             //console.log(data['error']);
                                             getQR();
                                             //getThank();
                                         }
-                                        else if(data['auth'] == '0') {
+                                        else if(data['status'] == '0') {
                                             //console.log(data['error']);
                                             alert("Username / Password is Incorrect");
                                         }
                                      
-                                        else if (data['auth'] == '3') {
+                                        else if (data['status'] == '3') {
                                             //console.log(data['error']);
                                             alert("Some error has occurred. Sorry for the inconvenience caused.");
                                         }
