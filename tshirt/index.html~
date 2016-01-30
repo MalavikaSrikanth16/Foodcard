@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>Pragyan 16</title>
-        <link href="https://app.datadoghq.com/static/css/datadog.css?v=33.2922" media="screen" rel="stylesheet" type="text/css" />
-        <link href="https://app.datadoghq.com/static/css/datadog-plugins.css?v=33.2922" media="screen" rel="stylesheet" type="text/css" />
-        <link href="https://app.datadoghq.com/static/css/media-queries.css?v=33.2922" media="screen" rel="stylesheet" type="text/css" />
+        <link href="Background/static/css/bkground1.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="Background/static/css/bkground2.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="Background/static/css/bkground3.css" media="screen" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             @viewport {
@@ -74,7 +74,7 @@
      
         
         <div id="login-fss-container" style="z-index:-2;"></div> 
-        <script src="https://app.datadoghq.com/static/js/dd-login.min.js?v=33.2922" type="text/javascript"></script>
+        <script src="Background/static/js/bkground.js" type="text/javascript"></script>
 
         <script>
         (function(){
@@ -134,7 +134,7 @@
         }());
         </script>
         <div class="logo">
-            <img class="img_logo" src="plogo.png" style="z-index:10;width:350px;height:250px;"/>
+            <img class="img_logo" src="plogo.png" style="z-index:10;width:300px;height:250px;"/>
         </div>
        
         <!-- Username & Password -->
