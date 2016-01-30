@@ -3,8 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Pragyan 16</title>
-
-        <link href='https://fonts.googleapis.com/css?family=Roboto:900,300' rel='stylesheet' type='text/css'>
+        <link href="https://app.datadoghq.com/static/css/datadog.css?v=33.2922" media="screen" rel="stylesheet" type="text/css" />
+        <link href="https://app.datadoghq.com/static/css/datadog-plugins.css?v=33.2922" media="screen" rel="stylesheet" type="text/css" />
+        <link href="https://app.datadoghq.com/static/css/media-queries.css?v=33.2922" media="screen" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @viewport {
+                width: device-width;
+                initial-scale: 1;
+            }
+            html { min-height: 100%; }
+            body { padding: 1px; }
+        </style>
+         <link href='https://fonts.googleapis.com/css?family=Roboto:900,300' rel='stylesheet' type='text/css'>
         <link type="text/css" rel="stylesheet" href="css/material.min.css"  media="screen,projection"/>
         <link type="text/css" rel="stylesheet" href="css/tshirt_form.css"/>
         <!--Let browser know website is optimized for mobile-->
@@ -59,10 +70,73 @@
         }
     </script>
     </head>
-    <body>
+    <body class="" style="background: #151022;">
+     
+        
+        <div id="login-fss-container" style="z-index:-2;"></div> 
+        <script src="https://app.datadoghq.com/static/js/dd-login.min.js?v=33.2922" type="text/javascript"></script>
+
+        <script>
+        (function(){
+            var dogHeight = 150,
+                spotHeightCoef = 1.5;
+
+            // Lights for the shader scene.
+            // Coordinates are relative to center point.
+            var loginLights = [
+                {
+                    // dog
+                    ambient: '#20292f',
+                    diffuse: '#256d94',
+                    x: -240,
+                    y: function(w, h) {return h / 2 - 150;},
+                    z: function(w, h) {return dogHeight * w/1300},
+                    start: {
+                        x: function(w, h) {return -240;},
+                        y: function(w, h) {return -h/2;},
+                        z: 0
+                    }
+
+                },
+                {
+                    // hilite
+                    ambient: '#000000',
+                    diffuse: '#990058',
+                    x: function(w, h) {return w / 2 - 10;},
+                    y: 0,
+                    z: function(w, h) {return dogHeight * spotHeightCoef * w/1300},
+                    start: {
+                        x: function(w, h) {return w/2;},
+                        y: function(w, h) {return -h/2;},
+                        z: 0
+                    }
+                }
+            ];
+
+            var loginSurface = new ShadedSurface({
+                container: '#login-fss-container',
+                cellsize: 80,
+                jitter: 0.3,
+                depth: 2.5,
+                materialAmbient: '#777777',
+                materialDiffuse: '#bbbbbb',
+                fillOpacity: 0.85,
+                strokeOpacity: 1,
+                strokeWidth: 1,
+                renderWith: 'canvas'
+            }, loginLights);
+
+            loginSurface.initialize()
+                .resize()
+                .draw()
+                .lightUp();
+
+        }());
+        </script>
         <div class="logo">
-            <img class="img_logo" src="plogo.jpg" />
+            <img class="img_logo" src="plogo.png" style="z-index:10;width:350px;height:250px;"/>
         </div>
+       
         <!-- Username & Password -->
         <div class="parent mdl_card mdl-shadow--4dp">
             <div class="question_set overlay mdl-cell--middle">
@@ -70,12 +144,12 @@
 	    <form action="index.html#">
             <div class="user_auth question_set mdl-">
                 <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" name="user_roll" id="user_roll" pattern="-?[0-9]*(\.[0-9]+)?" maxlength=9 minlength=9>
+                    <input class="mdl-textfield__input" type="text" name="user_roll" id="user_roll" pattern="-?[0-9]*(\.[0-9]+)?" maxlength=9 minlength=9 style="border:0px;background:none;">
                     <span class="mdl-textfield__error">Must be 9 digits, only numerical characters.</span>
                     <label class="mdl-textfield__label" for="user_roll">Roll Number</label>
                 </div>
                 <div class="field mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="password" name="user_password" id="user_password">
+                    <input class="mdl-textfield__input" type="password" name="user_password" id="user_password" style="border:0px;background:none;">
                     <label class="mdl-textfield__label" for="user_password">Password</label>
                 </div>
                 <div class="field">
