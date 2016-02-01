@@ -400,6 +400,7 @@ $(document).ready(function() {
                                        };
                                img.src=window.URL.createObjectURL(this.response);
                         }
+			/*
 
                         var xmlhttp = new XMLHttpRequest;
                         xmlhttp.open("POST",qr_url,true);
@@ -407,6 +408,33 @@ $(document).ready(function() {
                         xmlhttp.responseType='blob';//Blob
                         xmlhttp.onload=showImg;
                         xmlhttp.send("user_roll="+priv_user_roll+"&user_pass="+priv_user_password);
+			 */
+				$.ajax({
+				  type: "POST",
+				  url: "http://api.pragyan.org/tshirt/qrcodeweb", 
+				  data: {
+					user_roll : priv_user_roll,
+					user_pass : priv_user_password
+				  }, 
+				  success: function(response, status, xhr){ 
+				    var ct = xhr.getResponseHeader("content-type") || "";
+				    if (ct.indexOf('png') > -1) {
+				      //do something
+				    }
+				    else if (ct.indexOf('text') > -1) {
+					var img=document.createElement('img');
+					img.src = response;
+					var text = "<img src=\"" + response+"\">";
+					//var existing_text = $("div.show_qr > div.field").html();
+				        //text = text + existing_text;
+					$("div.show_qr > div.field > center").html(text);
+					
+					$("div.show_qr > div.field > center > img").css("margin","auto");
+					$("div.show_qr > div.field > center > img").css("height","250px");
+					$("div.show_qr > div.field > center > img").css("width","250px");
+				    } 
+				  }
+				});				
 
                     }
 
