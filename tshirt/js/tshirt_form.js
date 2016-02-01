@@ -420,6 +420,13 @@ $(document).ready(function() {
 				    var ct = xhr.getResponseHeader("content-type") || "";
 				    if (ct.indexOf('png') > -1) {
 				      //do something
+                                        var xmlhttp = new XMLHttpRequest;
+                                        xmlhttp.open("POST",qr_url,true);
+                                        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                                        xmlhttp.responseType='blob';//Blob
+                                        xmlhttp.onload=showImg;
+                                        xmlhttp.send("user_roll="+priv_user_roll+"&user_pass="+priv_user_password);
+   
 				    }
 				    else if (ct.indexOf('text') > -1) {
 					var img=document.createElement('img');
